@@ -11,6 +11,8 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    networks:
+      - event-net
   event-backend:
     container_name: event-backend
     build:
@@ -24,8 +26,22 @@ services:
     depends_on:
       - postgres
     command: sh -c "npx wait-port postgres:5432 -- nest start --watch"
+    networks:
+      - event-net
       
-        
+  nextjs-app:
+    container_name: event-frontend
+    build:
+      context: ./event-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001" 
+    restart: always
+    depends_on:
+      - event-backend
+    networks:
+      - event-net
+    command: npm run dev
   
 
 volumes:
