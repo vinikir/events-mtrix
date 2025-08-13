@@ -1,0 +1,37 @@
+services:
+  postgres:
+    image: postgres:15
+    container_name: event_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: event
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  event-backend:
+    container_name: event-backend
+    build:
+      context: ./event-backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/event
+    depends_on:
+      - postgres
+    command: sh -c "npx wait-port postgres:5432 -- nest start --watch"
+      
+        
+  
+
+volumes:
+    postgres_data: {}
+  
+
+networks:
+  event-net:
+    driver: bridge
