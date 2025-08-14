@@ -6,14 +6,10 @@
   --button-primary-hover: #383838;
   --button-secondary-hover: #f2f2f2;
 
-  display: grid;
-  grid-template-rows: 20px 1fr 20px;
-  align-items: center;
-  justify-items: center;
-  min-height: 100svh;
-  padding: 80px;
-  gap: 64px;
+  display: flex;
+  flex-direction: column;
   font-family: var(--font-geist-sans);
+  height: 100vh;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -164,4 +160,12 @@ a.secondary {
   .logo {
     filter: invert();
   }
+}
+
+.teste{
+  display: flex;
+  
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
 }
