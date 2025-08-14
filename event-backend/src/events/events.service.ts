@@ -6,15 +6,13 @@ export class EventsService {
 
     constructor(private prisma: PrismaService) { }
 
-    async getEvents(search: string | undefined, limit: number| undefined, offset: number | undefined) {
-        let params = {}
-
-        return await this.prisma.event.findMany({
+    async getEvents(search: string | undefined , limit: number, offset: number) {
+        let params = {
             skip:offset,
             take:limit,
-            orderBy: {
-                date: 'desc',
-            },
-        })
+            
+        }
+        
+        return await this.prisma.event.findMany(params)
     }
 }

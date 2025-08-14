@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsOptional, IsNumberString, IsString } from 'class-validator';
+import { IsOptional, IsNumberString, IsString, IsNumber } from 'class-validator';
 
 export class GetEventsDto {
     @ApiProperty({
@@ -16,8 +16,8 @@ export class GetEventsDto {
         default: 10,
     })
     @IsOptional()
-    @IsNumberString()
-    limit?: number;
+    @IsString()
+    limit?: string;
 
     @ApiProperty({
         description: 'Número de eventos para pular (offset)',
@@ -25,7 +25,7 @@ export class GetEventsDto {
         default: 0,
     })
     @IsOptional()
-    @IsNumberString()
-    offset?: number;
+    @IsString()
+    offset?: string;
 }
 

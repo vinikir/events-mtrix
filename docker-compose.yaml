@@ -13,6 +13,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - event-net
+    
   event-backend:
     container_name: event-backend
     build:
@@ -23,9 +24,10 @@ services:
     environment:
       - PORT=3000
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/event
+      - APP_ENV=develop
     depends_on:
       - postgres
-    command: sh -c "npx wait-port postgres:5432 -- nest start --watch"
+    command: sh start.sh
     networks:
       - event-net
       
@@ -37,10 +39,15 @@ services:
     ports:
       - "3001:3001" 
     restart: always
+    environment:
+      - PORT=3001
+      - API_URL=http://localhost:3000
     depends_on:
       - event-backend
     networks:
       - event-net
+    volumes:
+      - ./event-frontend:/app
     command: npm run dev
   
 

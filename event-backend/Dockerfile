@@ -1,4 +1,4 @@
-FROM node:20-alpine
+FROM node:22-alpine
 
 WORKDIR /app
 
@@ -8,6 +8,8 @@ RUN yarn install --frozen-lockfile
 
 
 COPY . .
+
+COPY start.sh ./
 
 COPY prisma ./prisma/
 

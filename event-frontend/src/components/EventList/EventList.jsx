@@ -9,8 +9,7 @@ import {
     Box,
     Divider,
 } from '@mui/material';
-import moment from 'moment';
-
+import CardEvent from '../CardEvent/CardEvent';
 const Eventlist = ({ events, isLoading }) => {
     if (isLoading) {
         return (
@@ -22,35 +21,23 @@ const Eventlist = ({ events, isLoading }) => {
     }
     return (
         <Container maxWidth="md">
+
             <Box sx={{ my: 4 }}>
+
                 <Typography variant="h4" component="h1" gutterBottom align="center">
                     Eventos Disponíveis
                 </Typography>
+
                 <Paper elevation={3}>
+
                     <List>
                         {events.length > 0 ? (
                             events.map((event, index) => {
-                                console.log(event)
+                                
                                 return (
 
-                                    <div key={event.uuid}>
-                                        <Container maxWidth="sm">
-                                            <img
-                                                srcSet={`${event.image}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                                                src={`${event.image}?w=248&fit=crop&auto=format`}
-                                                alt={event.name}
-                                                loading="lazy"
-                                            />
-                                        </Container>
+                                   <CardEvent event={event} />
 
-                                        <ListItem>
-                                            <ListItemText
-                                                primary={event.name}
-                                                secondary={`Data: ${moment(event.date).format("DD/MM/YYYY HH:mm")} | Local: ${event.local}`}
-                                            />
-                                        </ListItem>
-                                        {index < events.length - 1 && <Divider />}
-                                    </div>
                                 )
                             })
                         ) : (
@@ -59,7 +46,9 @@ const Eventlist = ({ events, isLoading }) => {
                             </ListItem>
                         )}
                     </List>
+
                 </Paper>
+                
             </Box>
         </Container>
     )

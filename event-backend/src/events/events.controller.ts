@@ -24,16 +24,17 @@ export class EventsController {
     async getEvents(@Query() query: GetEventsDto) {
 
         try {
-
+            
             const search = query.search ? query.search : ""
-            const limit = query.limit ? query.limit : 10
-            const offset = query.offset ? query.offset : 0
+            const limit = query.limit ? parseInt(query.limit) : 10
+            const offset = query.offset ? parseInt(query.offset) : 0
+            
             const events = await this.eventsService.getEvents(search, limit, offset)
 
             return ReturnSucesso(events);
 
         } catch (error) {
-
+console.log(query)
             throw new ErroCatch(error.message);
 
         }
