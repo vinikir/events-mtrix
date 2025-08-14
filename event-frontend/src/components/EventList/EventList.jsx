@@ -10,7 +10,9 @@ import {
     Divider,
 } from '@mui/material';
 import CardEvent from '../CardEvent/CardEvent';
+
 const Eventlist = ({ events, isLoading }) => {
+
     if (isLoading) {
         return (
             <Container maxWidth="md" sx={{ textAlign: 'center', mt: 4 }}>
@@ -48,7 +50,7 @@ const Eventlist = ({ events, isLoading }) => {
                     </List>
 
                 </Paper>
-                
+
             </Box>
         </Container>
     )

@@ -42,7 +42,9 @@ export default function Home() {
 				setShowBtnToTop(false);
 			}
 		};
+
 		window.addEventListener("scroll", handleScroll);
+
 		return () => window.removeEventListener("scroll", handleScroll);
 
 	}, [])
