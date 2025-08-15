@@ -49,85 +49,88 @@ const SideMenuBag = ({ bag, isCartOpen, toggleCart, handleCheckout }) => {
 
             <List sx={{ flexGrow: 1, overflow: 'auto' }}>
                 {bag.length > 0 ? (
-                    bag.map((item) => (
-                        <React.Fragment key={`${item.uuid}`}>
-                            <ListItem alignItems="flex-start">
-                                <ListItemAvatar>
-                                    <Avatar alt={item.name} src={item.image} variant="rounded" />
-                                </ListItemAvatar>
-                                <ListItemText
-                                    primary={item.name}
-                                    secondary={
-                                        <>
-                                            <Box sx={{ display: 'flex', alignItems: 'center', mt: 0.5 }}>
-                                                <EventIcon fontSize="small" sx={{ mr: 0.5 }} />
-                                                <Typography variant="body2" component="span">
-                                                    {moment(item.date).format("DD/MM/YYYY HH:mm")}
-                                                </Typography>
-                                            </Box>
-                                            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                                <LocationOnIcon fontSize="small" sx={{ mr: 0.5 }} />
-                                                <Typography variant="body2" component="span">
-                                                    {item.local}
-                                                </Typography>
-                                            </Box>
-                                        </>
-                                    }
-                                />
-                            </ListItem>
-
-
-                            {item.qantitySolded > 0 && (
-                                <ListItem sx={{ pt: 0, pb: 0 }}>
+                    bag.map((item, index) => {
+                        console.log(item)
+                        return (
+                            <React.Fragment key={`${item.uuid}-${index}`}>
+                                <ListItem alignItems="flex-start">
+                                    <ListItemAvatar>
+                                        <Avatar alt={item.name} src={item.image} variant="rounded" />
+                                    </ListItemAvatar>
                                     <ListItemText
-                                        primary={
-                                            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                                                <Typography variant="body2">
-                                                    Entrada Inteira
-                                                </Typography>
-                                                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                                    <Chip
-                                                        label={`${item.qantitySolded}x`}
-                                                        size="small"
-                                                        sx={{ mr: 1 }}
-                                                    />
-                                                    <Typography variant="body2">
-                                                        R$ {(item.price * item.qantitySolded).toFixed(2)}
+                                        primary={item.name}
+                                        secondary={
+                                            <>
+                                                <Box sx={{ display: 'flex', alignItems: 'center', mt: 0.5 }}>
+                                                    <EventIcon fontSize="small" sx={{ mr: 0.5 }} />
+                                                    <Typography variant="body2" component="span">
+                                                        {moment(item.date).format("DD/MM/YYYY HH:mm")}
                                                     </Typography>
                                                 </Box>
-                                            </Box>
+                                                <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                                    <LocationOnIcon fontSize="small" sx={{ mr: 0.5 }} />
+                                                    <Typography variant="body2" component="span">
+                                                        {item.local}
+                                                    </Typography>
+                                                </Box>
+                                            </>
                                         }
                                     />
                                 </ListItem>
-                            )}
 
-                            {item.halfPrice && item.qantityHalfSolded > 0 && (
-                                <ListItem sx={{ pt: 0, pb: 0 }}>
-                                    <ListItemText
-                                        primary={
-                                            <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                                                <Typography variant="body2">
-                                                    Meia Entrada
-                                                </Typography>
-                                                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                                                    <Chip
-                                                        label={`${item.qantityHalfSolded}x`}
-                                                        size="small"
-                                                        sx={{ mr: 1 }}
-                                                    />
+
+                                {item.qantitySolded > 0 && (
+                                    <ListItem sx={{ pt: 0, pb: 0 }}>
+                                        <ListItemText
+                                            primary={
+                                                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                                                     <Typography variant="body2">
-                                                        R$ {(item.price / 2 * item.qantityHalfSolded).toFixed(2)}
+                                                        Entrada Inteira
                                                     </Typography>
+                                                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                                        <Chip
+                                                            label={`${item.qantitySolded}x`}
+                                                            size="small"
+                                                            sx={{ mr: 1 }}
+                                                        />
+                                                        <Typography variant="body2">
+                                                            R$ {(item.price * item.qantitySolded).toFixed(2)}
+                                                        </Typography>
+                                                    </Box>
                                                 </Box>
-                                            </Box>
-                                        }
-                                    />
-                                </ListItem>
-                            )}
+                                            }
+                                        />
+                                    </ListItem>
+                                )}
 
-                            <Divider sx={{ my: 1 }} />
-                        </React.Fragment>
-                    ))
+                                { item.qantityHalfSolded > 0 && (
+                                    <ListItem sx={{ pt: 0, pb: 0 }}>
+                                        <ListItemText
+                                            primary={
+                                                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                                                    <Typography variant="body2">
+                                                        Meia Entrada
+                                                    </Typography>
+                                                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                                                        <Chip
+                                                            label={`${item.qantityHalfSolded}x`}
+                                                            size="small"
+                                                            sx={{ mr: 1 }}
+                                                        />
+                                                        <Typography variant="body2">
+                                                            R$ {(item.price / 2 * item.qantityHalfSolded).toFixed(2)}
+                                                        </Typography>
+                                                    </Box>
+                                                </Box>
+                                            }
+                                        />
+                                    </ListItem>
+                                )}
+
+                                <Divider sx={{ my: 1 }} />
+                            </React.Fragment>
+                        )
+                    })
                 ) : (
                     <Typography sx={{ p: 2 }}>Seu carrinho está vazio</Typography>
                 )}
@@ -138,7 +141,7 @@ const SideMenuBag = ({ bag, isCartOpen, toggleCart, handleCheckout }) => {
             <Box sx={{ p: 2 }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
                     <Typography variant="subtitle1">Total:</Typography>
-                    <Typography variant="subtitle1">R$ {calculateTotal().toFixed(2)}</Typography>
+                    <Typography variant="subtitle1">R$ {calculateTotal(bag).toFixed(2)}</Typography>
                 </Box>
 
                 <Button

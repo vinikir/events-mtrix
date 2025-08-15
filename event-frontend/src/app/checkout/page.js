@@ -50,16 +50,16 @@ const Checkout = () => {
 		}
 	}, [bag]);
 
-	console.log(bag)
-	const handleNext = () => {
+	
+	const handleNext = (validated= false) => {
 		if (activeStep === steps.length - 1) {
 
 			sendOrder()
 
 		} else {
 
-
-			if (activeStep == 0 && typeof user.user === "undefined") {
+			
+			if ( validated == false  && activeStep == 0 && typeof user.user === "undefined") {
 				setLoginModalOpen(true)
 				return
 			}
@@ -80,7 +80,7 @@ const Checkout = () => {
 		const token = user.access_token
 
 		placeOrder(infos, token).then((res) => {
-			console.log(res)
+			
 			setResultData(res.valor)
 			setConfirmationOpen(true)
 		}).catch((err) => {
@@ -92,12 +92,12 @@ const Checkout = () => {
 			<ModalLogin
 				loginModalOpen={loginModalOpen}
 				closeModal={() => setLoginModalOpen(false)}
-				handleNext={handleNext}
+				handleNext={() => handleNext(true)}
 			/>
 			<ModalConfirmacao 
 				confirmationOpen={confirmationOpen}
 				resultData={resultData}
-				userName={user.user.name}
+				userName={user?.user?.name}
 				onClose={() => setConfirmationOpen(false)}
 			/>
 			<Stepper activeStep={activeStep} alternativeLabel sx={{ mb: 4 }}>
@@ -184,7 +184,7 @@ const Checkout = () => {
 												</ListItem>
 											)}
 
-											{item.halfPrice && item.qantityHalfSolded > 0 && (
+											{ item.qantityHalfSolded > 0 && (
 												<ListItem sx={{ pl: 9 }}>
 													<ListItemText
 														primary={
@@ -277,7 +277,7 @@ const Checkout = () => {
 									price: item.price,
 									quantity: item.qantitySolded
 								}] : []),
-								...(item.halfPrice && item.qantityHalfSolded > 0 ? [{
+								...( item.qantityHalfSolded > 0 ? [{
 									name: `${item.name} (Meia)`,
 									price: item.price / 2,
 									quantity: item.qantityHalfSolded
@@ -303,7 +303,7 @@ const Checkout = () => {
 						<Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
 							<Typography variant="subtitle1">Total:</Typography>
 							<Typography variant="subtitle1">
-								R$ {calculateTotal().toFixed(2)}
+								R$ {calculateTotal(bag).toFixed(2)}
 							</Typography>
 						</Box>
 
@@ -318,7 +318,7 @@ const Checkout = () => {
 							<Button
 								variant="contained"
 								color="primary"
-								onClick={handleNext}
+								onClick={() => handleNext(false)}
 								fullWidth
 							>
 								{activeStep === steps.length - 1 ? 'Finalizar Compra' : 'Próximo'}

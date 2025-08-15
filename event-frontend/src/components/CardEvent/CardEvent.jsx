@@ -51,7 +51,7 @@ const CardEvent = React.memo(({ event, index }) => {
         event.qantitySolded = quantity
         event.qantityHalfSolded = quantityHalf
         event.totalPrice = calculateTotalOfEvent(event)
-        
+       
         setBag(event)
         clearValues()
     }
