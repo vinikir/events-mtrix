@@ -38,7 +38,7 @@ const Eventlist = ({ events, isLoading }) => {
                                 
                                 return (
 
-                                   <CardEvent event={event} />
+                                   <CardEvent event={event} index={index} />
 
                                 )
                             })

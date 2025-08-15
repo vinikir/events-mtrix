@@ -5,6 +5,12 @@ const prisma = new PrismaClient();
 
 async function main() {
     
+    const coutEvents = await prisma.event.count()
+
+    if(coutEvents > 0){
+        return
+    }
+    
     const formattedEvents = eventsData.map(event => ({
         ...event,
         date: new Date(event.date),

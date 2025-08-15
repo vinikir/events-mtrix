@@ -12,8 +12,10 @@ import moment from 'moment';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import useStoreBag from '@/app/store/useStoreBag';
+import {  calculateTotalOfEvent } from '@/services/functions';
 
-const CardEvent = React.memo(({ event }) => {
+
+const CardEvent = React.memo(({ event, index }) => {
 
     const setBag = useStoreBag((state) => state.setBag)
 
@@ -40,11 +42,18 @@ const CardEvent = React.memo(({ event }) => {
         });
     }, [event.price]);
 
+    const clearValues = () => {
+        setQuantity(0)
+        setQuantityHalf(0)
+    }
 
     const addItemToBag = () => {
         event.qantitySolded = quantity
         event.qantityHalfSolded = quantityHalf
-        setBag( event )
+        event.totalPrice = calculateTotalOfEvent(event)
+        
+        setBag(event)
+        clearValues()
     }
 
     const addQuantity = () => {
@@ -66,7 +75,7 @@ const CardEvent = React.memo(({ event }) => {
     const isSoldOut = useMemo(() => { return event.sold >= event.maximumAmount }, [event.sold])
 
     return (
-        <div key={event.uuid}>
+        <div key={`${event.uuid}-${index}`}>
             <Container >
                 <Container maxWidth="sm" sx={{
                     display: "flex",
@@ -185,9 +194,9 @@ const CardEvent = React.memo(({ event }) => {
                         <Button onClick={addItemToBag} variant="outlined">Adicionar</Button>
                     )}
                 </Container>
-                <br/>
+                <br />
                 <Divider />
-                <br/>
+                <br />
             </Container >
         </div>
     )

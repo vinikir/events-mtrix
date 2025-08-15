@@ -10,7 +10,7 @@ export interface EventData {
   sold: number;
 }
 
-export const eventsData: EventData[] = [
+export const eventsData: EventData[] =[
   {
     "name": "Show do Dream Theater",
     "price": 350,
@@ -34,7 +34,7 @@ export const eventsData: EventData[] = [
   {
     "name": "Workshop de Fotografia Digital",
     "price": 120,
-    "maximumAmount": 30,
+    "maximumAmount": 50,
     "halfPrice": false,
     "image": "https://placehold.co/600x400",
     "date": "2025-12-01T09:00:00Z",
@@ -43,7 +43,7 @@ export const eventsData: EventData[] = [
   },
   {
     "name": "Feira de Artesanato Local",
-    "price": 0,
+    "price": 15,
     "maximumAmount": 1000,
     "halfPrice": false,
     "image": "https://placehold.co/600x400",
@@ -83,13 +83,13 @@ export const eventsData: EventData[] = [
   },
   {
     "name": "Campeonato de Xadrez",
-    "price": 10,
+    "price": 50,
     "maximumAmount": 50,
     "halfPrice": false,
     "image": "https://placehold.co/600x400",
     "date": "2025-12-10T10:00:00Z",
     "local": "Recife",
-    "sold": 45
+    "sold": 50
   },
   {
     "name": "Festival de Cerveja Artesanal",
@@ -109,7 +109,7 @@ export const eventsData: EventData[] = [
     "image": "https://placehold.co/600x400",
     "date": "2026-02-08T20:30:00Z",
     "local": "Fortaleza",
-    "sold": 90
+    "sold": 100
   },
   {
     "name": "Maratona Urbana 10k",
@@ -143,7 +143,7 @@ export const eventsData: EventData[] = [
   },
   {
     "name": "Feira de Livros e HQ's",
-    "price": 0,
+    "price": 20,
     "maximumAmount": 1200,
     "halfPrice": false,
     "image": "https://placehold.co/600x400",
@@ -184,7 +184,7 @@ export const eventsData: EventData[] = [
   {
     "name": "Tour Histórico pelo Centro",
     "price": 35,
-    "maximumAmount": 25,
+    "maximumAmount": 50,
     "halfPrice": true,
     "image": "https://placehold.co/600x400",
     "date": "2025-12-05T14:30:00Z",
@@ -223,7 +223,7 @@ export const eventsData: EventData[] = [
   },
   {
     "name": "Semana Literária",
-    "price": 0,
+    "price": 25,
     "maximumAmount": 2000,
     "halfPrice": false,
     "image": "https://placehold.co/600x400",
@@ -244,7 +244,7 @@ export const eventsData: EventData[] = [
   {
     "name": "Curso de Culinária Italiana",
     "price": 220,
-    "maximumAmount": 20,
+    "maximumAmount": 50,
     "halfPrice": false,
     "image": "https://placehold.co/600x400",
     "date": "2025-10-25T19:00:00Z",
@@ -273,7 +273,7 @@ export const eventsData: EventData[] = [
   },
   {
     "name": "Lançamento de Produto Tech",
-    "price": 0,
+    "price": 50,
     "maximumAmount": 150,
     "halfPrice": false,
     "image": "https://placehold.co/600x400",
@@ -293,7 +293,7 @@ export const eventsData: EventData[] = [
   },
   {
     "name": "Caminhada Ecológica",
-    "price": 5,
+    "price": 15,
     "maximumAmount": 500,
     "halfPrice": false,
     "image": "https://placehold.co/600x400",
@@ -319,7 +319,7 @@ export const eventsData: EventData[] = [
     "image": "https://placehold.co/600x400",
     "date": "2025-11-17T19:30:00Z",
     "local": "Porto Alegre",
-    "sold": 1200
+    "sold": 1500
   },
   {
     "name": "Palestra sobre Empreendedorismo",
@@ -373,18 +373,18 @@ export const eventsData: EventData[] = [
   },
   {
     "name": "Concurso de Poesia",
-    "price": 10,
-    "maximumAmount": 40,
+    "price": 50,
+    "maximumAmount": 50,
     "halfPrice": false,
     "image": "https://placehold.co/600x400",
     "date": "2025-10-08T18:00:00Z",
     "local": "Recife",
-    "sold": 35
+    "sold": 50
   },
   {
     "name": "Tour por Vinícolas",
     "price": 280,
-    "maximumAmount": 20,
+    "maximumAmount": 50,
     "halfPrice": false,
     "image": "https://placehold.co/600x400",
     "date": "2026-01-10T10:00:00Z",
@@ -464,7 +464,7 @@ export const eventsData: EventData[] = [
   {
     "name": "Tour Gastronômico",
     "price": 140,
-    "maximumAmount": 30,
+    "maximumAmount": 50,
     "halfPrice": true,
     "image": "https://placehold.co/600x400",
     "date": "2025-10-04T12:00:00Z",
@@ -484,7 +484,7 @@ export const eventsData: EventData[] = [
   {
     "name": "Workshop de Escrita Criativa",
     "price": 90,
-    "maximumAmount": 25,
+    "maximumAmount": 50,
     "halfPrice": false,
     "image": "https://placehold.co/600x400",
     "date": "2026-02-20T14:00:00Z",
@@ -503,7 +503,7 @@ export const eventsData: EventData[] = [
   },
   {
     "name": "Feira de Moda Sustentável",
-    "price": 0,
+    "price": 25,
     "maximumAmount": 700,
     "halfPrice": false,
     "image": "https://placehold.co/600x400",
@@ -511,4 +511,4 @@ export const eventsData: EventData[] = [
     "local": "Porto Alegre",
     "sold": 600
   }
-];
+]

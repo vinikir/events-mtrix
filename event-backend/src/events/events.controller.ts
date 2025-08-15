@@ -19,22 +19,21 @@ export class EventsController {
         status: 200,
         description: 'Retorna a lista de eventos com sucesso.',
         type: EventEntity,
-        isArray: true, // Indica que a resposta é um array de EventEntity
+        isArray: true,
     })
     async getEvents(@Query() query: GetEventsDto) {
 
         try {
             
-            const search = query.search ? query.search : ""
+            
             const limit = query.limit ? parseInt(query.limit) : 10
             const offset = query.offset ? parseInt(query.offset) : 0
             
-            const events = await this.eventsService.getEvents(search, limit, offset)
+            const events = await this.eventsService.getEvents( limit, offset)
 
             return ReturnSucesso(events);
 
         } catch (error) {
-console.log(query)
             throw new ErroCatch(error.message);
 
         }

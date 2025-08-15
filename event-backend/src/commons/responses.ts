@@ -5,7 +5,9 @@ export const erros: Record<number, { msg: string; codHttp: number }> = {
     1: { msg: 'O email é obrigatório.', codHttp: 422 },
     2: { msg: 'Credenciais inválidas.', codHttp: 401 },
     3: { msg: 'Os parametros email e senha são obrigatorias.', codHttp: 422 },
-    4: { msg: 'O Formato do email esta invalido.', codHttp: 422 },
+    4: { msg: 'O formato do email esta invalido.', codHttp: 422 },
+    5: { msg: 'O parametros bag é obrigatorio.', codHttp: 422 },
+    6: { msg: 'O parametros user é obrigatorio.', codHttp: 422 },
 };
 
 export class ErroPadrao extends HttpException {
